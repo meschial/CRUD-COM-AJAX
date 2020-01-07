@@ -17,9 +17,10 @@ $(document).ready(function(){
 				$('#modalAdicionar').modal('hide');	
 				alert(resultado.msg);								
 				buscar();
-
+			},
+			error: function(){
+				alert('Erro ao inserir');
 			}
-
 		});
 	});
 
@@ -41,13 +42,16 @@ $(document).ready(function(){
 				buscar();
 				alert(resultado.msg);
 				$('#modalEditar').modal('hide');
+			},
+			error: function(){
+				alert('Erro ao atualizar');
 			}
 		});
 	});	
 
 	//excluir
 	$(document).on('click', '.excluir', function(){
-		var id = $(this).data('id');
+		var id = $(this).data('i');
 		getId(id);
 		$.ajax({
 			type: 'POST', 
@@ -58,6 +62,9 @@ $(document).ready(function(){
 				alert(resultado.msg);
 				buscar();			
 				
+			},
+			error: function(){
+				alert('Erro ao excluir');
 			}
 		});
 	});
