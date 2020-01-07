@@ -8,14 +8,9 @@
         {
             $$key = trim ( $value );
         }  
-try 
-    {
 
     $salario = formataValor( $salario );
 
-   if ($data <> '1997-04-18') {
-       return;
-   }
     $pdo->beginTransaction();
 
     if ( empty ( $id ) )
@@ -38,7 +33,8 @@ try
             $pdo->commit();
             $resultado['msg'] = 'Funcionario Adicionado!!';
         } 
-    }catch{        
+        else 
+        {
             $resultado['msg'] = 'Erro ao adicionar!!';
         }
          echo json_encode($resultado);
